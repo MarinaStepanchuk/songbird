@@ -1,0 +1,5 @@
+import '@/styles/main.scss'
+import Main from './js/main'
+// import '@/styles/index.css'
+// import logo from '@/assets/img/logo.png'
+// import json from './assets/json'
