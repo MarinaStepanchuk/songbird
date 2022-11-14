@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -31,6 +32,9 @@ const cssLoaders = (extra) => {
                 // hmr: isDev,
                 // reloadAll: true,
             // },
+                // options: {
+                //     emit: false,
+                // },
         },
         'css-loader'
     ]
@@ -52,7 +56,13 @@ module.exports = {
     },
     output: {
         filename: filename('js'),
-        path: path.resolve(__dirname, 'build')
+        path: path.resolve(__dirname, 'build'),
+        clean: true,
+        assetModuleFilename: 'assets/img/[name][ext]',
+        // assetModuleFilename: pathData => {
+        //     const filepath = path.dirname(pathData.filename).split('/').slice(1).join('/');
+        //     return `${filepath}/[name][ext]`;
+        // },
     },
     resolve: {
         extensions: ['.js', '.json', '.scss', '.css', '.svg', '.png', '.jpg'],
@@ -61,10 +71,12 @@ module.exports = {
         }
     },
     optimization: optimization(),
+    // devtool: 'source-map',
     devServer: {
         port: 3000,
         open: true,
-        hot: isDev
+        hot: isDev,
+        watchFiles: ['src/pages/*.html']
     },
     plugins: [
         new HTMLWebpackPlugin ({
@@ -74,28 +86,28 @@ module.exports = {
                 collapseWhitespace: isProd
             }
         }),
-        new HTMLWebpackPlugin ({
-            filename: 'quiz.html',
-            template: './pages/quiz.html',
-            minify: {
-                collapseWhitespace: isProd
-            }
-        }),
-        new HTMLWebpackPlugin ({
-            filename: 'score.html',
-            template: './pages/score.html',
-            minify: {
-                collapseWhitespace: isProd
-            }
-        }),
-        new HTMLWebpackPlugin ({
-            filename: 'gallery.html',
-            template: './pages/gallery.html',
-            minify: {
-                collapseWhitespace: isProd
-            }
-        }),
-        new CleanWebpackPlugin (),
+        // new HTMLWebpackPlugin ({
+        //     filename: 'quiz.html',
+        //     template: './pages/quiz.html',
+        //     minify: {
+        //         collapseWhitespace: isProd
+        //     }
+        // }),
+        // new HTMLWebpackPlugin ({
+        //     filename: 'score.html',
+        //     template: './pages/score.html',
+        //     minify: {
+        //         collapseWhitespace: isProd
+        //     }
+        // }),
+        // new HTMLWebpackPlugin ({
+        //     filename: 'gallery.html',
+        //     template: './pages/gallery.html',
+        //     minify: {
+        //         collapseWhitespace: isProd
+        //     }
+        // }),
+        // new CleanWebpackPlugin (),
         new CopyWebpackPlugin ({
             patterns: [
                 {
@@ -110,10 +122,16 @@ module.exports = {
         }),
         new MiniCssExtractPlugin ({
             filename: filename('css'),
-        })
+        }),
+        // new webpack.HotModuleReplacementPlugin(),
     ],
     module: {
         rules: [
+            //html
+            // {
+            //     test: /\.html$/i,
+            //     loader: "html-loader",
+            // },
             // Loading CSS
             {
                 test: /\.css$/,
@@ -126,13 +144,13 @@ module.exports = {
             },
             // Loading images
             {
-                test: /\.(jpg|gif|png|ico|svg)$/,
-                use: ['file-loader']
+                test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
+                type: 'asset/resource',
             },
             // Loading fonts
             {
-                test: /\.(ttf|otf|eot|woff|woff2)$/,
-                use: ['file-loader']
+                test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
+                type: 'asset/inline',
             }
         ]
     }

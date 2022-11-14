@@ -1,5 +1,7 @@
 import '@/styles/main.scss'
+// import index from '@/pages/index.html'
 import Main from './js/main'
 // import '@/styles/index.css'
-// import logo from '@/assets/img/logo.png'
+// import logo from './assets/img/background.jpg'
 // import json from './assets/json'
+// import './pages/index.html'
