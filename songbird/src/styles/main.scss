@@ -2,11 +2,11 @@
 
 @import './base/fonts.scss';
 
-// @import 'base/base.scss';
+@import './base/base.scss';
 
-// @import 'layout/header.scss';
+@import 'layout/header.scss';
 
-// @import 'layout/footer.scss';
+@import 'layout/footer.scss';
 
 // @import 'pages/start.scss';
 
@@ -16,6 +16,9 @@
 
 // @import 'pages/gallery.scss';
 
-html {
-    background-color: red;
-}
+// html {
+//     // background-color: #b5ae9a;
+//     background-image: url('../assets/img/background.jpg');
+//     font-size: 50px;
+//     font-family: 'Roboto', sans-serif;
+// }

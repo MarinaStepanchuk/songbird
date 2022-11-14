@@ -1,0 +1,29 @@
+html {
+    background-color: #c5b49c;
+    background-image: url('../');
+    font-size: 10px;
+}
+
+body {
+    background-color: #c5b49c;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+main {
+    background-color: #2b4249;
+    height: 500px;
+    color: #e4d3b4;
+    border-radius: 2rem;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}

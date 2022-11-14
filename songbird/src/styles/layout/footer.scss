@@ -1,0 +1,19 @@
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 30px;
+    color: #2b4249;
+    margin: 20px 5% 0px 0px;
+    font-size: 3.5rem;
+    font-weight: 600;
+
+    .rs-logo {
+        // height: 45px;
+        width: 15%;
+    }
+
+    .author-logo {
+        height: 50px;
+    }
+}
