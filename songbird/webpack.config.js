@@ -86,13 +86,13 @@ module.exports = {
                 collapseWhitespace: isProd
             }
         }),
-        // new HTMLWebpackPlugin ({
-        //     filename: 'quiz.html',
-        //     template: './pages/quiz.html',
-        //     minify: {
-        //         collapseWhitespace: isProd
-        //     }
-        // }),
+        new HTMLWebpackPlugin ({
+            filename: 'quiz.html',
+            template: './pages/quiz.html',
+            minify: {
+                collapseWhitespace: isProd
+            }
+        }),
         // new HTMLWebpackPlugin ({
         //     filename: 'score.html',
         //     template: './pages/score.html',
@@ -117,7 +117,15 @@ module.exports = {
                 {
                     from: path.resolve(__dirname, 'src/assets/favicon.ico'),
                     to: path.resolve(__dirname, 'build', 'assets')
-                }
+                },
+                {
+                    from: path.resolve(__dirname, 'src/assets/video/birdsong-video.mp4'),
+                    to: path.resolve(__dirname, 'build', 'assets/video')
+                },
+                {
+                    from: path.resolve(__dirname, 'src/assets/audio'),
+                    to: path.resolve(__dirname, 'build', 'assets/audio')
+                },
             ]
         }),
         new MiniCssExtractPlugin ({

@@ -81,9 +81,13 @@
     }    
 }
 
+.start-link {
+    min-width: 20%;
+}
+
 .preview-start-button {
     @include flex();
-    min-width: 20%;
+    min-width: 100%;
     min-height: 40px;
     font-size: 2rem;
     text-transform: uppercase;
@@ -124,11 +128,6 @@
     
     &:hover::before, &:focus::before {
       opacity: 1;
-    }
-
-    .start-link {
-        color: #2b4249;
-        z-index: 10;
     }
 }
 
