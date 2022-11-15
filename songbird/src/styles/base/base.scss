@@ -9,11 +9,11 @@ body {
     max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
+    font-family: 'Europe', sans-serif;
 }
 
 main {
     background-color: #2b4249;
-    height: 500px;
     color: #e4d3b4;
     border-radius: 2rem;
 }
@@ -26,4 +26,9 @@ ul {
 
 a {
     text-decoration: none;
+}
+
+h1 {
+    font-family: 'Torus Bold', sans-serif;
+    margin: 0;
 }

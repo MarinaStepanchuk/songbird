@@ -4,9 +4,14 @@ header {
     justify-content: space-between;
     color: #2b4249;
     margin: 0px 20px 0px 10px;
+    font-family: 'Torus Bold', sans-serif;
 
     a {
         color: #e4d3b4;
+
+        &:hover {
+            text-shadow: 0 0 10px #e4d3b4,0 0 20px #e4d3b4,0 0 30px #e4d3b4;
+        }
     }
 
     .logo {
@@ -18,7 +23,7 @@ header {
     }
 
     .navigation-container {
-        width: 50%;
+        width: 70%;
     }
 
     .navigation-list {
@@ -39,4 +44,49 @@ header {
         border-radius: 2rem 2rem 0 0;
     }
 
+    .sound-switcher-container {
+        width: 80px;
+        color: #e4d3b4;
+            .sound-switcher-icon {
+                width: 2.5rem;
+                cursor: pointer;
+            }
+    }
+
+    .language-container {
+        width: 100%;
+        @include flex();
+        gap: 3px;
+        font-size: 20px;
+        color: #e4d3b4;
+
+        .language-switch {
+            width: 45px;
+            height: 20px;
+            appearance: none;
+            border-radius: 10px;
+            transition: all 1s;
+            cursor: pointer;
+            background-color: #e4d3b4;
+    
+            &::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                appearance: none;
+                width: 20px;
+                height: 20px;
+                border-radius: 10px;
+                background: #7e7461; 
+                cursor: pointer;
+            }
+        }
+          
+        .name-setting-language {
+            width: 60%;
+        }
+          
+        .language-en,
+        .language-ru {
+            cursor: pointer;
+        } 
+    }
 }

@@ -1,19 +1,25 @@
 footer {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
+    @include flex(row, flex-end, center);
     gap: 30px;
     color: #2b4249;
-    margin: 20px 5% 0px 0px;
-    font-size: 3.5rem;
+    margin: 15px 5% 0px 0px;
+    font-size: 3rem;
     font-weight: 600;
 
     .rs-logo {
-        // height: 45px;
-        width: 15%;
+        width: 115px;
     }
 
     .author-logo {
-        height: 50px;
+       height: 45px;
+
+        &:hover {
+            fill: #e4d3b4;
+            transform: scale(1.1);
+        }
+    }
+
+    .rs-logo-img:hover {
+        transform: scale(1.1);
     }
 }

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../assets/favicon.ico" type="image/icon">
-    <title>Document</title>
+    <title>Songbird</title>
 </head>
 <body>
     <header>
@@ -37,22 +37,50 @@
                         </a>
                     </div>
                 </li>
+                <li class="navigation-item sound-switcher-container">
+                    <img src="./assets/img/volume-icon-on.svg" alt="sound on button" class="sound-switcher-icon">
+                </li>
+                <li class="navigation-item">
+                    <div class="language-container">
+                        <div class="language-en">EN</div>
+                        <input type="range" min="0" max="1" class="language-switch" value="0">
+                        <div class="language-ru">RU</div>
+                    </div>
+                </li>
             </ul>
         </nav>       
     </header>
-    <main>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/CXcAx16yl6E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <main class="preview">
+        <h1 class="preview-title">Online quiz</h1>
+        <div class="preview-container">
+            <div class="preview-video-container">
+                <div class="block-braun"></div>
+                <div class="block-gray"></div>
+                <video class="preview-video" autoplay loop>
+                    <source src="./assets/birdsong-video.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="greeting-text-container">
+                <span class="greeting-text-item item1">Humans are surrounded by a huge variety of sounds. Some of the most pleasant are the sounds of nature, of which birdsongs are a part.</span>
+                <span class="greeting-text-item">How many birds do you know?</span>
+                <span class="greeting-text-item">How well developed is your hearing?</span class="greeting-text-item">
+                <span class="greeting-text-item">Do you hear more than others?</span>
+                <span class="greeting-text-item">Can you tell which bird is singing by ear?</span>
+                <span class="greeting-text-item">Press start and take the quiz!</span>
+            </div>
+        </div>
+        <button class="preview-start-button">
+            <a class="start-link" href="./quiz.html">Start quiz</a>
+        </button>        
     </main>
     <footer>
-
-            <a class="rs-logo" href="https://rs.school/js/">
-                <img class="rs-logo-img" src="./assets/img/rs_school-icon.svg" alt="rs-scool logo">
-            </a>
-            <span>2022</span>
-            <a href="https://github.com/MarinaStepanchuk">
-                <img class="author-logo" src="./assets/img/github-icon.svg" alt="author github">
-            </a>
-
+        <a class="rs-logo" href="https://rs.school/js/">
+            <img class="rs-logo-img" src="./assets/img/rs_school-icon.svg" alt="rs-scool logo">
+        </a>
+        <span>2022</span>
+        <a href="https://github.com/MarinaStepanchuk">
+            <img class="author-logo" src="./assets/img/github-icon.svg" alt="author github">
+        </a>
     </footer>
 </body>
 </html>
