@@ -50,6 +50,10 @@ header {
             .sound-switcher-icon {
                 width: 2.5rem;
                 cursor: pointer;
+
+                &:hover {
+                filter: drop-shadow(0px 0px 8px #e7dcc9);
+                }
             }
     }
 
@@ -87,6 +91,10 @@ header {
         .language-en,
         .language-ru {
             cursor: pointer;
+            
+            &:hover {
+                text-shadow: 0 0 10px #e4d3b4,0 0 20px #e4d3b4,0 0 30px #e4d3b4;
+            }
         } 
     }
 }

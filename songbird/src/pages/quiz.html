@@ -18,21 +18,21 @@
             <ul class="navigation-list">
                 <li class="navigation-item">
                     <div>
-                        <a href="./index.html">
+                        <a class="lang" key="pageHome" href="./index.html">
                             Home
                         </a>
                     </div>
                 </li>
                 <li class="navigation-item">
                     <div>
-                        <a href="./quiz.html">
+                        <a class="lang" key="pageQuiz" href="./quiz.html">
                             Quiz
                         </a>
                     </div>
                 </li>
                 <li class="navigation-item">
                     <div>
-                        <a href="./gallery.html">
+                        <a class="lang" key="pageGallery" href="./gallery.html">
                             Gallery
                         </a>
                     </div>
@@ -52,12 +52,12 @@
     </header>
     <main class="quiz">
         <ul class="type-birds-container">
-            <li class="type-birds-item item-active">Warm-up</li>
-            <li class="type-birds-item">Sparrows</li>
-            <li class="type-birds-item">Forest birds</li>
-            <li class="type-birds-item">Songbirds</li>
-            <li class="type-birds-item">Predator birds</li>
-            <li class="type-birds-item">Sea birds</li>
+            <li class="type-birds-item item-active lang" key="titleQuiz1">Warm-up</li>
+            <li class="type-birds-item lang" key="titleQuiz2">Sparrows</li>
+            <li class="type-birds-item lang" key="titleQuiz3">Forest birds</li>
+            <li class="type-birds-item lang" key="titleQuiz4">Songbirds</li>
+            <li class="type-birds-item lang" key="titleQuiz5">Predator birds</li>
+            <li class="type-birds-item lang" key="titleQuiz6">Sea birds</li>
         </ul>
         <div class="puzzle-container">
             <div class="shadow-container">
@@ -71,49 +71,77 @@
                     <button class="play player-icon"></button>
                     <div class="progress">
                       <div class="timeline">
-                        <div class="duration-sound"></div>
+                        <div class="timeline-circle"></div>
                       </div>
                       <div class="player-time">
-                        <div class="timer-play"></div>
-                        <div class="duration"></div>
+                        <div class="timer-play">1:00</div>
+                        <div class="duration">1:00</div>
                       </div>
                     </div> 
                 </div>
             </div>
             <div class="score-container">
-                <span class="score-title">Score:</span>
+                <span class="score-title lang" key="score">Score:</span>
                 <span class="score">4</span>
             </div>
         </div>
         <div class="options-wrapper">
             <ul class="options-container">
-                <li class="options-item">Fsvsbsbsbbs</li>
-                <li class="options-item">Fsvsbsbsbbs</li>
-                <li class="options-item">Fsvsbsbsbbs</li>
-                <li class="options-item">Fsvsbsbsbbs</li>
-                <li class="options-item">Fsvsbsbsbbs</li>
-                <li class="options-item options-item-last">Fsvsbsbsbbs</li>
+                <li class="options-item">
+                    <svg class="dot-circle wrong" viewBox="0 0 512 512"><path d="M175 175C184.4 165.7 199.6 165.7 208.1 175L255.1 222.1L303 175C312.4 165.7 327.6 165.7 336.1 175C346.3 184.4 346.3 199.6 336.1 208.1L289.9 255.1L336.1 303C346.3 312.4 346.3 327.6 336.1 336.1C327.6 346.3 312.4 346.3 303 336.1L255.1 289.9L208.1 336.1C199.6 346.3 184.4 346.3 175 336.1C165.7 327.6 165.7 312.4 175 303L222.1 255.1L175 208.1C165.7 199.6 165.7 184.4 175 175V175zM512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM256 48C141.1 48 48 141.1 48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48z"/></svg>
+                    <span>Fsvsbsbsbbs</span> 
+                </li>
+                <li class="options-item">
+                    <div class="dot">
+                        <svg  class="dot-circle guess" viewBox="0 0 512 512"><path d="M243.8 339.8C232.9 350.7 215.1 350.7 204.2 339.8L140.2 275.8C129.3 264.9 129.3 247.1 140.2 236.2C151.1 225.3 168.9 225.3 179.8 236.2L224 280.4L332.2 172.2C343.1 161.3 360.9 161.3 371.8 172.2C382.7 183.1 382.7 200.9 371.8 211.8L243.8 339.8zM512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM256 48C141.1 48 48 141.1 48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48z"/></svg>
+                    </div>
+                    <span class="guess">Fsvsbsbsbbs</span>
+                </li>
+                <li class="options-item">
+                    <div class="dot">
+                        <svg class="dot-circle" viewBox="0 0 512 512"><path d="M512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM256 48C141.1 48 48 141.1 48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48z"/></svg>
+                    </div>
+                    <span>Fsvsbsbsbbs</span>
+                </li>
+                <li class="options-item">
+                    <div class="dot">
+                        <svg class="dot-circle" viewBox="0 0 512 512"><path d="M512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM256 48C141.1 48 48 141.1 48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48z"/></svg>
+                    </div>
+                    <span>Fsvsbsbsbbs</span>
+                </li>
+                <li class="options-item">
+                    <div class="dot">
+                        <svg class="dot-circle" viewBox="0 0 512 512"><path d="M512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM256 48C141.1 48 48 141.1 48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48z"/></svg>
+                    </div>
+                    <span>Fsvsbsbsbbs</span>
+                </li>
+                <li class="options-item">
+                    <div class="dot">
+                        <svg class="dot-circle" viewBox="0 0 512 512"><path d="M512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM256 48C141.1 48 48 141.1 48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48z"/></svg>
+                    </div>
+                    <span>Fsvsbsbsbbs</span>
+                </li>
             </ul>
             <div class="instructions">
                 <span>Listen to the player.</span>
                 <span>And select a bird from the list</span>
                 <span>Each attempt will cost you 1 point</span>
             </div>
-            <!-- <div class="card-bird-wrapper">
+            <div class="card-bird-wrapper">
                 <div class="card-body">
-                    <img src="./assets/img/shadow.png" alt="">
+                    <img class="card-img" src="./assets/img/shadow.png" alt="">
                     <div class="card-text">
                         <span class="name-bird">Finch</span>
                         <span class="type-bird">Fringilla coelebs</span>
-                        <div class="player-container player-mini">
-                            <button class="play player-icon"></button>
-                            <div class="progress">
-                              <div class="timeline">
-                                <div class="duration-sound"></div>
+                        <div class="player-container-mini">
+                            <button class="play-mini player-icon-mini"></button>
+                            <div class="progress-mini">
+                              <div class="timeline-mini">
+                                <div class="timeline-circle-mini"></div>
                               </div>
-                              <div class="player-time">
-                                <div class="timer-play"></div>
-                                <div class="duration"></div>
+                              <div class="player-time-mini">
+                                <div class="timer-play-mini">1:00</div>
+                                <div class="duration-mini">1:00</div>
                               </div>
                             </div> 
                         </div>
@@ -122,9 +150,9 @@
                 <span class="card-description">
                     Turtledoves live in mixed and broad-leaved forests, as well as in city parks and towns. Birds often choose places of life next to humans and easily get used to people. Due to the melodic pleasant singing of turtle doves, they are often bred at home.
                 </span>
-            </div> -->
+            </div>
         </div>
-        <button class="next-level-button">Next level</button>
+        <button class="next-level-button level-active lang" key="nextLevel">Next level</button>
     </main>
     <footer>
         <a class="rs-logo" href="https://rs.school/js/">
