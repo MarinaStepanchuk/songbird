@@ -1,6 +1,7 @@
 import '@/styles/main.scss'
 // import index from '@/pages/index.html'
 import Main from './js/main'
+import Header from './js/header'
 // import '@/styles/index.css'
 // import logo from './assets/img/background.jpg'
 // import json from './assets/json'
