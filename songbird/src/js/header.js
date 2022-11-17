@@ -52,7 +52,7 @@ const languageSwitch = document.querySelector('.language-switch');
 const languageRu = document.querySelector('.language-ru');
 const languageEn = document.querySelector('.language-en');
 
-let languageSelected = 'en';
+export let languageSelected = 'en';
 
 languageEn.addEventListener('click', () => {
   changeLang('en');
@@ -82,7 +82,7 @@ function changeLang (lang) {
 const volume = document.querySelector('.sound-switcher-container');
 const volumeImg = document.querySelector('.sound-switcher-icon')
 
-let soundOff = true;
+export let soundOff = true;
 
 volume.addEventListener('click', () => {
   if(soundOff) {

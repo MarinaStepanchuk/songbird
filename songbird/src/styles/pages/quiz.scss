@@ -35,19 +35,26 @@
 .puzzle-container {
     width: 90%;
     @include flex(row, space-around, center);
-    gap: 5%;
+    gap: 3%;
     padding-bottom: 30px;
 
     .shadow-container {
-        width: 20%;
+        width: 230px;
+        height: 185px;
+        border-radius: 20px;
         @include flex();
+        background-image: url('../assets/img/shadow.png');
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+    }
 
-        .shadow {
-            width: 80%;
-            padding: 15px 20px;
-            background-color: #996f45;
-            border-radius: 20px;
-        }
+    .close-img {
+        background-image: url('../assets/img/shadow.png');
+        background-size: 60%;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-color: #996f45;
     }
 
     .answer-container {
@@ -75,7 +82,6 @@
     @include flex(row, space-around, flex-start);
     gap: 5%;
     padding-bottom: 35px;
-    // border: 2px solid #7e7461;
 
     .options-container {
         width: 45%;
@@ -138,15 +144,14 @@
             padding-bottom: 2rem;
 
             .card-img {
-                width: 30%;
-                padding: 15px 20px;
+                width: 50%;
                 background-color: #996f45;
                 border-radius: 20px;
             }
 
             .card-text {
                 @include flex(column, space-between, flex-start);
-                width: 60%;
+                width: 50%;
                 padding-left: 20px;
             }
 
@@ -207,7 +212,7 @@
 
     .play,
     .play-mini {
-        background-size: 45px 45px;
+        background-size: 90% 90%;
         background-image: url("../assets/img/play-icon.svg");
     }
     
@@ -308,10 +313,6 @@
     @include flex();
     width: 20px;
 }
-
-// .options-item:hover .dot-circle {
-//     filter: drop-shadow(0px 0px 8px #e7dcc9);
-// }
 
 .dot-circle {
     width: 15px;
