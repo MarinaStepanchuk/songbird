@@ -21,8 +21,11 @@ const library = {
     'titleQuiz4': 'Songbirds',
     'titleQuiz5': 'Predator birds',
     'titleQuiz6': 'Sea birds',
-    'score': 'Score',
+    'score': 'Score:',
     'nextLevel': 'Next level',
+    'instrText1': 'Listen to the player.',
+    'instrText2': 'And select a bird from the list.',
+    'instrText3': 'Each attempt will cost you 1 point.',
   },
     'ru': {
       'pageHome': 'Главная',
@@ -42,8 +45,11 @@ const library = {
       'titleQuiz4': 'Певчие птицы',
       'titleQuiz5': 'Хищные птицы',
       'titleQuiz6': 'Морские птицы',
-      'score': 'Баллы',
+      'score': 'Баллы:',
       'nextLevel': 'Следующий уровень',
+      'instrText1': 'Прослушайте плеер.',
+      'instrText2': 'Выберите птицу из списка.',
+      'instrText3': 'Каждая попытка будет стоить вам 1 балл.',
   }
 };
 
@@ -52,7 +58,7 @@ const languageSwitch = document.querySelector('.language-switch');
 const languageRu = document.querySelector('.language-ru');
 const languageEn = document.querySelector('.language-en');
 
-export let languageSelected = 'en';
+let languageSelected = 'en';
 
 languageEn.addEventListener('click', () => {
   changeLang('en');
@@ -82,7 +88,7 @@ function changeLang (lang) {
 const volume = document.querySelector('.sound-switcher-container');
 const volumeImg = document.querySelector('.sound-switcher-icon')
 
-export let soundOff = true;
+let soundOff = true;
 
 volume.addEventListener('click', () => {
   if(soundOff) {
@@ -115,7 +121,7 @@ function setLocalStorage(key, value) {
   localStorage.setItem(key, JSON.stringify(value));
 };
 
-function getLocalStorage(key) {
+export function getLocalStorage(key) {
   if(localStorage.getItem(key)) {
       return JSON.parse(localStorage.getItem(key));
   }
