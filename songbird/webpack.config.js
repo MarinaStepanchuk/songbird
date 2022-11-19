@@ -87,26 +87,27 @@ module.exports = {
             }
         }),
         new HTMLWebpackPlugin ({
+            filename: 'score.html',
+            template: './pages/score.html',
+            minify: {
+                collapseWhitespace: isProd
+            }
+        }),
+        new HTMLWebpackPlugin ({
             filename: 'quiz.html',
             template: './pages/quiz.html',
             minify: {
                 collapseWhitespace: isProd
             }
         }),
-        // new HTMLWebpackPlugin ({
-        //     filename: 'score.html',
-        //     template: './pages/score.html',
-        //     minify: {
-        //         collapseWhitespace: isProd
-        //     }
-        // }),
-        // new HTMLWebpackPlugin ({
-        //     filename: 'gallery.html',
-        //     template: './pages/gallery.html',
-        //     minify: {
-        //         collapseWhitespace: isProd
-        //     }
-        // }),
+
+        new HTMLWebpackPlugin ({
+            filename: 'gallery.html',
+            template: './pages/gallery.html',
+            minify: {
+                collapseWhitespace: isProd
+            }
+        }),
         // new CleanWebpackPlugin (),
         new CopyWebpackPlugin ({
             patterns: [

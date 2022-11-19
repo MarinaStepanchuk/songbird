@@ -22,7 +22,9 @@ function removeTypeBirds(num) {
 checkTypeBirds(numberGroup);
 
 const nextLevelButton = document.querySelector('.next-level-button');
-nextLevelButton.setAttribute('disabled', 'true');
+nextLevelButton.href = '#'
+let canNextLevel = false;
+// nextLevelButton.setAttribute('disabled', 'true');
 
 //----------fill answer options block-------------
 
@@ -255,12 +257,13 @@ birdsAnswersBlock.addEventListener('click', event => {
         getAudioMini(birdName);
         if(canMark) {
             if (birdName === rightAnswer.name) {
+                canNextLevel = true;
                 rigthAnswerImg.classList.remove('close-img');
                 rigthAnswerImg.classList.add('open-img');
                 rigthAnswerImg.style.backgroundImage = `url(${rightAnswer.image})`;
                 rigthAnswerName.textContent = rightAnswer.name;
                 nextLevelButton.classList.add('level-active');
-                nextLevelButton.removeAttribute('disabled');
+                // nextLevelButton.removeAttribute('disabled');
                 bird.classList.add('guess');
                 audioWrong.pause();
                 audioQuess.load();
@@ -268,14 +271,13 @@ birdsAnswersBlock.addEventListener('click', event => {
                 canMark = false;
                 if(isPlay) {
                 audio.pause();
-                isPlay = !isPlay;
+                    isPlay = !isPlay;
                 }
                 playButton.classList.remove('pause');
                 let calc = 6 - counter;
                 sum += 6 - counter;
                 score.textContent =`${score.textContent} + ${calc}`;
-                setTimeout(() => score.textContent = sum, 800)
-                
+                setTimeout(() => score.textContent = sum, 800);
                 counter = 1;
             } else {
                 counter++;
@@ -313,13 +315,11 @@ function getAudioMini(birdName) {
     audioMini.addEventListener('canplay', () => {
         audioDurationMini.textContent = getTimeCodeFromNum(audioMini.duration);
     })
-    
 }
 
 playerMini.appendChild(audioMini);
 audioMini.setAttribute('hidden', true);
 let isPlayMini = false;
-
 
 function playAudioMini() {
     if(isPlayMini) {
@@ -424,11 +424,15 @@ buttonVolumeMini.addEventListener('click', () => {
 //---------next level-----------
 
 nextLevelButton.addEventListener('click', () => {
+    if(!canNextLevel) {
+        return;
+    }
+    canNextLevel = false;
     if(numberGroup === 5) {
-        document.location='./index.html'
+        nextLevelButton.href = './score.html'
     }
     birdsData = languageSelected === 'en' ? birdsDataEn : birdsDataRu;
-    nextLevelButton.setAttribute('disabled', 'true');
+    // nextLevelButton.setAttribute('disabled', 'true');
     nextLevelButton.classList.remove('level-active');
     removeTypeBirds(numberGroup)
     numberGroup++;
@@ -436,7 +440,7 @@ nextLevelButton.addEventListener('click', () => {
     itemsAswers.forEach(item => {
         item.className = '';
         item.classList.add('options-item')
-    })
+    });
     canMark = true;
     fillAnswers(numberGroup);
     infoBirdBlock.classList.add('hide');
@@ -447,28 +451,28 @@ nextLevelButton.addEventListener('click', () => {
     isPlayMini = false;
 })
 
-function startQuiz() {
-    birdsData = languageSelected === 'en' ? birdsDataEn : birdsDataRu;
-    nextLevelButton.setAttribute('disabled', 'true');
-    nextLevelButton.classList.remove('level-active');
-    removeTypeBirds(numberGroup)
-    numberGroup = 0;
-    sum = 0;
-    counter = 1;
-    checkTypeBirds(numberGroup);
-    itemsAswers.forEach(item => {
-        item.className = '';
-        item.classList.add('options-item')
-    })
-    canMark = true;
-    fillAnswers(numberGroup);
-    infoBirdBlock.classList.add('hide');
-    instructionBlock.classList.remove('hide');
-    rightAnswer = selectBird()
-    fillRightAnswerBlock();
-    audioMini.pause();
-    isPlayMini = false;
-}
+// function startQuiz() {
+//     birdsData = languageSelected === 'en' ? birdsDataEn : birdsDataRu;
+//     nextLevelButton.setAttribute('disabled', 'true');
+//     nextLevelButton.classList.remove('level-active');
+//     removeTypeBirds(numberGroup)
+//     numberGroup = 0;
+//     sum = 0;
+//     counter = 1;
+//     checkTypeBirds(numberGroup);
+//     itemsAswers.forEach(item => {
+//         item.className = '';
+//         item.classList.add('options-item')
+//     })
+//     canMark = true;
+//     fillAnswers(numberGroup);
+//     infoBirdBlock.classList.add('hide');
+//     instructionBlock.classList.remove('hide');
+//     rightAnswer = selectBird()
+//     fillRightAnswerBlock();
+//     audioMini.pause();
+//     isPlayMini = false;
+// }
 
 
 //----change language--------------
@@ -524,7 +528,6 @@ function changeLangQuiz(lang) {
             }
         });
         birdsData = birdsDataEn;
-        
     } else {
         birdsDataEn[numberGroup].forEach((elem, index) => {
             if(elem.name === rightAnswer.name) {
@@ -535,9 +538,5 @@ function changeLangQuiz(lang) {
     rightAnswer = birdsData[numberGroup][numberRightAnswer];
     if(!canMark) {
         rigthAnswerName.textContent = rightAnswer.name;   
-    }
-
-
-
-    
+    }   
 }

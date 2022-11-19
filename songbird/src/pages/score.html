@@ -5,9 +5,71 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../assets/favicon.ico" type="image/icon">
-    <title>Document</title>
+    <title>Score</title>
 </head>
 <body>
-    <a href="./gallery.html">страница-4</a>  
+    <header>
+        <div class="logo">
+            <a href="./index.html">
+                <img src="./assets/img/logo.png" alt="logo">
+            </a>
+        </div> 
+        <nav class="navigation-container">
+            <ul class="navigation-list">
+                <li class="navigation-item">
+                    <div>
+                        <a class="lang" key="pageHome" href="./index.html">
+                            Home
+                        </a>
+                    </div>
+                </li>
+                <li class="navigation-item">
+                    <div>
+                        <a class="lang" key="pageQuiz" href="./quiz.html">
+                            Quiz
+                        </a>
+                    </div>
+                </li>
+                <li class="navigation-item">
+                    <div>
+                        <a class="lang" key="pageGallery" href="./gallery.html">
+                            Gallery
+                        </a>
+                    </div>
+                </li>
+                <li class="navigation-item sound-switcher-container">
+                    <img src="./assets/img/volume-icon-on.svg" alt="sound on button" class="sound-switcher-icon">
+                </li>
+                <li class="navigation-item">
+                    <div class="language-container">
+                        <div class="language-en">EN</div>
+                        <input type="range" min="0" max="1" class="language-switch" value="0">
+                        <div class="language-ru">RU</div>
+                    </div>
+                </li>
+            </ul>
+        </nav>       
+    </header>
+    <main>
+        <div class="win-message">
+            <span class="congratulations-title lang" key="congratulationsTitle">Поздравляем!</span>
+            <span class="congratulations-text lang" key="congratulationsText">Вы прошли викторину и набрали 8 из 30 возможных баллов</span>
+            <a class="button-play-again lang" key="buttonPlayAgain" href="./quiz.html">
+                Попробовать еще раз
+            </a>
+            <a class="button-go-home lang" key="buttonGoHome" href="./index.html">
+                Вернуться на главную
+            </a>
+        </div>
+    </main>
+    <footer>
+        <a class="rs-logo" href="https://rs.school/js/">
+            <img class="rs-logo-img" src="./assets/img/rs_school-icon.svg" alt="rs-scool logo">
+        </a>
+        <span>2022</span>
+        <a href="https://github.com/MarinaStepanchuk">
+            <img class="author-logo" src="./assets/img/github-icon.svg" alt="author github">
+        </a>
+    </footer>
 </body>
 </html>
