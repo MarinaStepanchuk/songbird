@@ -58,15 +58,17 @@ const languageSwitch = document.querySelector('.language-switch');
 const languageRu = document.querySelector('.language-ru');
 const languageEn = document.querySelector('.language-en');
 
-let languageSelected = 'en';
+export let languageSelected = 'en';
 
 languageEn.addEventListener('click', () => {
   changeLang('en');
+  languageSelected = 'en';
   languageSwitch.value = '0';
 });
 
 languageRu.addEventListener('click', () => {
   changeLang('ru');
+  languageSelected = 'ru';
   languageSwitch.value = '1';
 });
 
@@ -134,6 +136,7 @@ window.addEventListener('beforeunload', () =>  {
 });
 
 window.addEventListener('load', () => {
+  console.log(getLocalStorage('language').label)
   if(getLocalStorage('language').label) {
       languageSelected = getLocalStorage('language').label;
   } else {

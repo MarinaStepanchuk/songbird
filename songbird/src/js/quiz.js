@@ -1,24 +1,11 @@
 import birdsDataRu from './birds_ru';
 import birdsDataEn from './birds_en';
-import {getLocalStorage} from './header'
-
-// import {languageSelected} from './header'
-
-// window.addEventListener('load', () =>  {
-//     birdsPanel.firstElementChild.classList.add('item-active');
-// });
-
-// let numberGroup;
-// elementsPanel.forEach((element, index) => {
-//     if(element.classList.contains('item-active')) {
-//         numberGroup = index;
-//     }
-// })
+import {getLocalStorage, languageSelected} from './header'
 
 //-----load info birds------------
 
 let birdsData = getLocalStorage('language').label === 'en' ? birdsDataEn : birdsDataRu;
-let numberGroup = 0;
+export let numberGroup = 0;
 
 const birdsTypesBlockItems = Array.from(document.querySelectorAll('.type-birds-item'));
 
@@ -191,14 +178,15 @@ buttonVolume.addEventListener('click', () => {
 });
 
 //-----------fill right answer block-----------
+let numberRightAnswer;
 
 const selectBird = () => {
     const number = getRandomNumber(0, 5);
+    numberRightAnswer = number;
     return birdsData[numberGroup][number]
 }
 
 let rightAnswer = selectBird();
-
 
 const fillRightAnswerBlock = () => {
     rigthAnswerImg.classList.remove('open-img');
@@ -283,8 +271,11 @@ birdsAnswersBlock.addEventListener('click', event => {
                 isPlay = !isPlay;
                 }
                 playButton.classList.remove('pause');
+                let calc = 6 - counter;
                 sum += 6 - counter;
-                score.textContent = sum;
+                score.textContent =`${score.textContent} + ${calc}`;
+                setTimeout(() => score.textContent = sum, 800)
+                
                 counter = 1;
             } else {
                 counter++;
@@ -433,6 +424,10 @@ buttonVolumeMini.addEventListener('click', () => {
 //---------next level-----------
 
 nextLevelButton.addEventListener('click', () => {
+    if(numberGroup === 5) {
+        document.location='./index.html'
+    }
+    birdsData = languageSelected === 'en' ? birdsDataEn : birdsDataRu;
     nextLevelButton.setAttribute('disabled', 'true');
     nextLevelButton.classList.remove('level-active');
     removeTypeBirds(numberGroup)
@@ -451,3 +446,98 @@ nextLevelButton.addEventListener('click', () => {
     audioMini.pause();
     isPlayMini = false;
 })
+
+function startQuiz() {
+    birdsData = languageSelected === 'en' ? birdsDataEn : birdsDataRu;
+    nextLevelButton.setAttribute('disabled', 'true');
+    nextLevelButton.classList.remove('level-active');
+    removeTypeBirds(numberGroup)
+    numberGroup = 0;
+    sum = 0;
+    counter = 1;
+    checkTypeBirds(numberGroup);
+    itemsAswers.forEach(item => {
+        item.className = '';
+        item.classList.add('options-item')
+    })
+    canMark = true;
+    fillAnswers(numberGroup);
+    infoBirdBlock.classList.add('hide');
+    instructionBlock.classList.remove('hide');
+    rightAnswer = selectBird()
+    fillRightAnswerBlock();
+    audioMini.pause();
+    isPlayMini = false;
+}
+
+
+//----change language--------------
+
+const languageSwitch = document.querySelector('.language-switch');
+const languageRu = document.querySelector('.language-ru');
+const languageEn = document.querySelector('.language-en');
+
+languageEn.addEventListener('click', () => {
+    changeLangQuiz('en');
+    languageSwitch.value = '0';
+});
+  
+languageRu.addEventListener('click', () => {
+    changeLangQuiz('ru');
+    languageSwitch.value = '1';
+});
+  
+languageSwitch.addEventListener('click', () => {
+    let language = languageSwitch.value === '1' ? 'ru' : 'en';
+    changeLangQuiz(language);
+});
+
+function changeLangQuiz(lang) {
+    itemsAswers.forEach(item => {
+        if(lang === 'en') {
+            birdsDataRu[numberGroup].forEach((elem, index) => {
+                if(elem.name === item.textContent) {
+                    item.textContent = birdsDataEn[numberGroup][index].name;
+                    birdInfoName.textContent = birdsDataEn[numberGroup][index].name;
+                    birdInfoType.textContent = birdsDataEn[numberGroup][index].species;
+                    birdInfoDescr.textContent = birdsDataEn[numberGroup][index].description;
+                };
+            });
+            birdsData = birdsDataEn;
+        } else {
+            birdsDataEn[numberGroup].forEach((elem, index) => {
+                if(elem.name === item.textContent) {
+                    item.textContent = birdsDataRu[numberGroup][index].name;
+                    birdInfoName.textContent = birdsDataRu[numberGroup][index].name;
+                    birdInfoType.textContent = birdsDataRu[numberGroup][index].species;
+                    birdInfoDescr.textContent = birdsDataRu[numberGroup][index].description;
+                };
+            });
+            birdsData = birdsDataRu;
+        };
+    });
+
+    if(lang === 'en') {
+        birdsDataRu[numberGroup].forEach((elem, index) => {
+            if(elem.name === rightAnswer.name) {
+                rightAnswer = birdsDataEn[numberGroup][index].name
+            }
+        });
+        birdsData = birdsDataEn;
+        
+    } else {
+        birdsDataEn[numberGroup].forEach((elem, index) => {
+            if(elem.name === rightAnswer.name) {
+                rightAnswer = birdsDataRu[numberGroup][numberRightAnswer]
+            }
+        });
+    };
+    rightAnswer = birdsData[numberGroup][numberRightAnswer];
+    if(!canMark) {
+        rigthAnswerName.textContent = rightAnswer.name;   
+    }
+
+
+
+    
+}

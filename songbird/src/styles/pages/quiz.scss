@@ -1,4 +1,5 @@
 .quiz {
+    position: relative;
     width: 100%;
     @include flex(column, flex-start, center);
     padding-top: 35px;
@@ -245,7 +246,6 @@
 
     .play,
     .play-mini {
-        // background-size: 90% 90%;
         background-image: url("../assets/img/play-icon.svg");
     }
     
@@ -425,5 +425,4 @@
     &:hover::before {
       opacity: 1;
     }
-
 }
