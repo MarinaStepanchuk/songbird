@@ -39,9 +39,6 @@
                         </a>
                     </div>
                 </li>
-                <li class="navigation-item sound-switcher-container">
-                    <img src="./assets/img/volume-icon-on.svg" alt="sound on button" class="sound-switcher-icon">
-                </li>
                 <li class="navigation-item">
                     <div class="language-container">
                         <div class="language-en">EN</div>
@@ -63,9 +60,14 @@
             <div class="preview-video-container">
                 <div class="block-braun"></div>
                 <div class="block-gray"></div>
-                <video class="preview-video" muted autoplay loop>
-                    <source src="./assets/video/birdsong-video.mp4" type="video/mp4">
-                </video>
+                <div class="video-block">
+                    <div class="sound-switcher-container">
+                        <img src="./assets/img/volume-icon-off.svg" alt="sound on button" class="sound-switcher-icon">
+                    </div>
+                    <video class="preview-video" muted autoplay loop>
+                        <source src="./assets/video/birdsong-video.mp4" type="video/mp4">
+                    </video>
+                </div>
             </div>
             <div class="greeting-text-container">
                 <span class="greeting-text-item lang" key="textStart1"></span>

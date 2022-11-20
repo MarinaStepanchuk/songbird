@@ -95,37 +95,7 @@ function changeLang (lang) {
   });
 };
 
-//----------volume------------
 
-const volume = document.querySelector('.sound-switcher-container');
-const volumeImg = document.querySelector('.sound-switcher-icon')
-
-let soundOff = true;
-
-volume?.addEventListener('click', () => {
-  if(soundOff) {
-    volumeImg.src = './assets/img/volume-icon-on.svg';
-    volumeOn();
-  } else {
-    volumeImg.src = './assets/img/volume-icon-off.svg';
-    volumeOff(); 
-  }
-});
-
-const soundElements = Array.from(document.getElementsByTagName('audio'));
-const videoElements = Array.from(document.getElementsByTagName('video'));
-
-const volumeOff = () => {
-  soundElements.forEach(item => item.volume = 0);
-  videoElements.forEach(item => item.volume = 0);
-  soundOff = true;
-};
-
-const volumeOn = () => {
-  soundElements.forEach(item => item.volume = 1);
-  videoElements.forEach(item => item.volume = 1);
-  soundOff = false;
-};
 
 //-----burger-menu---------
 
@@ -181,15 +151,15 @@ window.addEventListener('load', () => {
       languageSwitch.value = '0' ;
   }
   changeLang(languageSelected);
-  if(getLocalStorage('soundOff')) {
-    if(volumeImg) {
-      volumeImg.src = './assets/img/volume-icon-off.svg';
-      volumeOff();
-    }
-  } else {
-    if(volumeImg) {
-      volumeImg.src = './assets/img/volume-icon-on.svg';
-      volumeOn();
-    }
-  }
+  // if(getLocalStorage('soundOff')) {
+  //   if(volumeImg) {
+  //     volumeImg.src = './assets/img/volume-icon-off.svg';
+  //     volumeOff();
+  //   }
+  // } else {
+  //   if(volumeImg) {
+  //     volumeImg.src = './assets/img/volume-icon-on.svg';
+  //     volumeOn();
+  //   }
+  // }
 });

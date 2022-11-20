@@ -122,22 +122,6 @@ header {
                     }
                 } 
             }
-            
-            .sound-switcher-container {
-                width: 80px;
-                color: #e4d3b4;
-                padding-left: 5px;
-                padding-right: 5px;
-                order: 5;
-                    .sound-switcher-icon-burger {
-                        width: 2.5rem;
-                        cursor: pointer;
-            
-                        &:hover {
-                        filter: drop-shadow(0px 0px 8px #e7dcc9);
-                        }
-                    }
-            }
         }
     }
 
@@ -165,23 +149,6 @@ header {
         @media (max-width: 680px) {
             display: none;
         }
-    }
-
-
-
-    .sound-switcher-container {
-        width: 80px;
-        color: #e4d3b4;
-        padding-left: 5px;
-        padding-right: 5px;
-            .sound-switcher-icon {
-                width: 2.5rem;
-                cursor: pointer;
-
-                &:hover {
-                filter: drop-shadow(0px 0px 8px #e7dcc9);
-                }
-            }
     }
 
     .language-container {
