@@ -14,12 +14,12 @@ const isProd = !isDev;
 const optimization = (extra) => {
     const config = {}
 
-    if(isProd) {
-        config.minimizer = [
-            new CssMinimizerPlugin(),
-            new TerserWebpackPlugin()
-        ]
-    }
+    // if(isProd) {
+    //     config.minimizer = [
+    //         new CssMinimizerPlugin(),
+    //         new TerserWebpackPlugin()
+    //     ]
+    // }
 
     return config
 }
@@ -74,7 +74,7 @@ module.exports = {
             '@': path.resolve(__dirname, 'src')
         }
     },
-    optimization: optimization(),
+    // optimization: optimization(),
     // devtool: 'source-map',
     devServer: {
         port: 3000,
@@ -87,33 +87,33 @@ module.exports = {
             filename: 'index.html',
             template: './pages/index.html',
             chunks: ['header', 'start'],
-            minify: {
-                collapseWhitespace: isProd
-            }
+            // minify: {
+            //     collapseWhitespace: isProd
+            // }
         }),
         new HTMLWebpackPlugin ({
             filename: 'quiz.html',
             template: './pages/quiz.html',
-            chunks: ['quiz', 'start'],
-            minify: {
-                collapseWhitespace: isProd
-            }
+            // chunks: ['quiz', 'start'],
+            // minify: {
+            //     collapseWhitespace: isProd
+            // }
         }),
         new HTMLWebpackPlugin ({
             filename: 'score.html',
             template: './pages/score.html',
-            chunks: ['header', 'score'],
-            minify: {
-                collapseWhitespace: isProd
-            }
+            // chunks: ['header', 'score'],
+            // minify: {
+            //     collapseWhitespace: isProd
+            // }
         }),
         new HTMLWebpackPlugin ({
             filename: 'gallery.html',
             template: './pages/gallery.html',
-            chunks: ['gallery', 'start'],
-            minify: {
-                collapseWhitespace: isProd
-            }
+            // chunks: ['header', 'gallery'],
+            // minify: {
+            //     collapseWhitespace: isProd
+            // }
         }),
         // new CleanWebpackPlugin (),
         new CopyWebpackPlugin ({
