@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../assets/favicon.ico" type="image/icon">
+    <link rel="icon" href="./assets/favicon.ico" type="image/icon">
     <title>Score</title>
 </head>
 <body>
@@ -53,7 +53,12 @@
     <main>
         <div class="win-message">
             <span class="congratulations-title lang" key="congratulationsTitle">Поздравляем!</span>
-            <span class="congratulations-text lang" key="congratulationsText">Вы прошли викторину и набрали 8 из 30 возможных баллов</span>
+            <div class="congratulations-text">
+                <span class="lang" key="congratulationsText1">Вы прошли викторину и набрали </span>
+                <span class="score-sum"></span>
+                <span class="lang" key="congratulationsText2"> из 30 возможных баллов</span>
+            </div>
+            
             <a class="button-play-again lang" key="buttonPlayAgain" href="./quiz.html">
                 Попробовать еще раз
             </a>
@@ -71,5 +76,6 @@
             <img class="author-logo" src="./assets/img/github-icon.svg" alt="author github">
         </a>
     </footer>
+    <script type="module" src="./score.js"></script>
 </body>
 </html>

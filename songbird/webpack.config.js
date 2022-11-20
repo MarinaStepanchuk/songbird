@@ -52,7 +52,11 @@ module.exports = {
     context: path.resolve(__dirname, 'src'),
     mode: 'development',
     entry: {
-        main: './index.js'
+        start: './js/start.js',
+        quiz: './js/quiz.js',
+        score: './js/score.js',
+        gallery: './js/gallery.js',
+        header: './js/header.js',
     },
     output: {
         filename: filename('js'),
@@ -82,13 +86,7 @@ module.exports = {
         new HTMLWebpackPlugin ({
             filename: 'index.html',
             template: './pages/index.html',
-            minify: {
-                collapseWhitespace: isProd
-            }
-        }),
-        new HTMLWebpackPlugin ({
-            filename: 'score.html',
-            template: './pages/score.html',
+            chunks: ['header', 'start'],
             minify: {
                 collapseWhitespace: isProd
             }
@@ -96,14 +94,23 @@ module.exports = {
         new HTMLWebpackPlugin ({
             filename: 'quiz.html',
             template: './pages/quiz.html',
+            chunks: ['quiz', 'start'],
             minify: {
                 collapseWhitespace: isProd
             }
         }),
-
+        new HTMLWebpackPlugin ({
+            filename: 'score.html',
+            template: './pages/score.html',
+            chunks: ['header', 'score'],
+            minify: {
+                collapseWhitespace: isProd
+            }
+        }),
         new HTMLWebpackPlugin ({
             filename: 'gallery.html',
             template: './pages/gallery.html',
+            chunks: ['gallery', 'start'],
             minify: {
                 collapseWhitespace: isProd
             }

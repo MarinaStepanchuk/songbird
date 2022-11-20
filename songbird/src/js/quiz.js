@@ -1,3 +1,5 @@
+import '@/styles/main.scss'
+
 import birdsDataRu from './birds_ru';
 import birdsDataEn from './birds_en';
 import {getLocalStorage, languageSelected} from './header'
@@ -199,7 +201,7 @@ const fillRightAnswerBlock = () => {
     })
     audioTime.textContent = '0:00'
     rigthAnswerImg.classList.add('close-img');
-    rigthAnswerImg.style.backgroundImage = `url('../assets/img/shadow.png')`
+    rigthAnswerImg.style.backgroundImage = `url('./assets/img/shadow.png')`
     rigthAnswerName.textContent = '********'
 }
 
