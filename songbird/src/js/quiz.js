@@ -444,9 +444,9 @@ nextLevelButton.addEventListener('click', () => {
     canNextLevel = false;
     if(numberGroup === 5) {
         nextLevelButton.href = './score.html'
+        return
     }
     birdsData = languageSelected === 'en' ? birdsDataEn : birdsDataRu;
-    // nextLevelButton.setAttribute('disabled', 'true');
     nextLevelButton.classList.remove('level-active');
     removeTypeBirds(numberGroup)
     numberGroup++;
