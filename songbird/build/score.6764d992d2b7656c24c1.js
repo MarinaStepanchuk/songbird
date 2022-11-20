@@ -1,0 +1,1 @@
+(()=>{"use strict";document.querySelector(".score-sum").innerHTML="9"})();
