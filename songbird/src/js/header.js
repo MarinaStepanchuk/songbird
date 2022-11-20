@@ -102,7 +102,7 @@ const volumeImg = document.querySelector('.sound-switcher-icon')
 
 let soundOff = true;
 
-volume.addEventListener('click', () => {
+volume?.addEventListener('click', () => {
   if(soundOff) {
     volumeImg.src = './assets/img/volume-icon-on.svg';
     volumeOn();
@@ -151,9 +151,6 @@ blur.addEventListener('click', () => {
   blur.classList.remove('menu-open');
 });
 
-
-
-
 //-----------Local storage-------------
 
 export function setLocalStorage(key, value) {
@@ -185,10 +182,14 @@ window.addEventListener('load', () => {
   }
   changeLang(languageSelected);
   if(getLocalStorage('soundOff')) {
-    volumeImg.src = './assets/img/volume-icon-off.svg';
-    volumeOff();
+    if(volumeImg) {
+      volumeImg.src = './assets/img/volume-icon-off.svg';
+      volumeOff();
+    }
   } else {
-    volumeImg.src = './assets/img/volume-icon-on.svg';
-    volumeOn();
+    if(volumeImg) {
+      volumeImg.src = './assets/img/volume-icon-on.svg';
+      volumeOn();
+    }
   }
 });

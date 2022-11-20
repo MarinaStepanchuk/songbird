@@ -14,12 +14,12 @@ const isProd = !isDev;
 const optimization = (extra) => {
     const config = {}
 
-    // if(isProd) {
-    //     config.minimizer = [
-    //         new CssMinimizerPlugin(),
-    //         new TerserWebpackPlugin()
-    //     ]
-    // }
+    if(isProd) {
+        config.minimizer = [
+            new CssMinimizerPlugin(),
+            new TerserWebpackPlugin()
+        ]
+    }
 
     return config
 }
@@ -28,13 +28,6 @@ const cssLoaders = (extra) => {
     const loaders = [
         {
             loader: MiniCssExtractPlugin.loader,
-            // options: {
-                // hmr: isDev,
-                // reloadAll: true,
-            // },
-                // options: {
-                //     emit: false,
-                // },
         },
         'css-loader'
     ]
@@ -45,8 +38,6 @@ const cssLoaders = (extra) => {
 
     return loaders
 }
-
-const filename = ext => isDev ? `[name].${ext}` : `[name].[hash].${ext}`;
 
 module.exports = {
     context: path.resolve(__dirname, 'src'),
@@ -59,14 +50,9 @@ module.exports = {
         header: './js/header.js',
     },
     output: {
-        filename: filename('js'),
+        filename: "[name].js",
         path: path.resolve(__dirname, 'build'),
         clean: true,
-        assetModuleFilename: 'assets/img/[name][ext]',
-        // assetModuleFilename: pathData => {
-        //     const filepath = path.dirname(pathData.filename).split('/').slice(1).join('/');
-        //     return `${filepath}/[name][ext]`;
-        // },
     },
     resolve: {
         extensions: ['.js', '.json', '.scss', '.css', '.svg', '.png', '.jpg'],
@@ -74,8 +60,8 @@ module.exports = {
             '@': path.resolve(__dirname, 'src')
         }
     },
-    // optimization: optimization(),
-    // devtool: 'source-map',
+    devtool: 'eval',
+    optimization: optimization(),
     devServer: {
         port: 3000,
         open: true,
@@ -84,71 +70,51 @@ module.exports = {
     },
     plugins: [
         new HTMLWebpackPlugin ({
+            inject: false,
             filename: 'index.html',
             template: './pages/index.html',
-            chunks: ['header', 'start'],
-            // minify: {
-            //     collapseWhitespace: isProd
-            // }
+            minify: {
+                collapseWhitespace: isProd
+            }
         }),
         new HTMLWebpackPlugin ({
+            inject: false,
             filename: 'quiz.html',
             template: './pages/quiz.html',
-            // chunks: ['quiz', 'start'],
-            // minify: {
-            //     collapseWhitespace: isProd
-            // }
+            minify: {
+                collapseWhitespace: isProd
+            }
         }),
         new HTMLWebpackPlugin ({
+            inject: false,
             filename: 'score.html',
             template: './pages/score.html',
-            // chunks: ['header', 'score'],
-            // minify: {
-            //     collapseWhitespace: isProd
-            // }
+            minify: {
+                collapseWhitespace: isProd
+            }
         }),
         new HTMLWebpackPlugin ({
+            inject: false,
             filename: 'gallery.html',
             template: './pages/gallery.html',
-            // chunks: ['header', 'gallery'],
-            // minify: {
-            //     collapseWhitespace: isProd
-            // }
+            minify: {
+                collapseWhitespace: isProd
+            }
         }),
-        // new CleanWebpackPlugin (),
         new CopyWebpackPlugin ({
             patterns: [
                 {
-                    from: path.resolve(__dirname, 'src/assets/img'),
-                    to: path.resolve(__dirname, 'build', 'assets/img')
-                },
-                {
-                    from: path.resolve(__dirname, 'src/assets/favicon.ico'),
+                    from: path.resolve(__dirname, 'src/assets'),
                     to: path.resolve(__dirname, 'build', 'assets')
-                },
-                {
-                    from: path.resolve(__dirname, 'src/assets/video/birdsong-video.mp4'),
-                    to: path.resolve(__dirname, 'build', 'assets/video')
-                },
-                {
-                    from: path.resolve(__dirname, 'src/assets/audio'),
-                    to: path.resolve(__dirname, 'build', 'assets/audio')
                 },
             ]
         }),
         new MiniCssExtractPlugin ({
-            filename: filename('css'),
+            filename: 'main.css',
         }),
-        // new webpack.HotModuleReplacementPlugin(),
     ],
     module: {
         rules: [
-            //html
-            // {
-            //     test: /\.html$/i,
-            //     loader: "html-loader",
-            // },
-            // Loading CSS
             {
                 test: /\.css$/,
                 use: cssLoaders()
