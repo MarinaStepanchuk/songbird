@@ -273,6 +273,7 @@ birdsAnswersBlock.addEventListener('click', event => {
                 bird.classList.add('guess');
                 audioWrong.pause();
                 audioQuess.load();
+                audioQuess.volume = 0.5;
                 audioQuess.play();
                 canMark = false;
                 if(isPlay) {
@@ -294,6 +295,7 @@ birdsAnswersBlock.addEventListener('click', event => {
                 bird.classList.add('wrong');
                 audioQuess.pause();
                 audioWrong.load();
+                audioWrong.volume = 0.5;
                 audioWrong.play();
             };
         };
@@ -390,7 +392,7 @@ progressPointMini.onmousedown = function(event) {
       document.removeEventListener('mouseup', onMouseUp);
       document.removeEventListener('mousemove', onMouseMove);
       canShiftMini = true;
-      audioMini.currentTime = (parseInt(progressPointMini.style.left) / progressBarMini.offsetWidth) * durSound;
+      audioMini.currentTime = (parseInt(progressPointMini.style.left) / progressBarMini.offsetWidth) * durSoundMini;
       audioTimeMini.textContent = getTimeCodeFromNum(audioMini.currentTime);
     }
 
