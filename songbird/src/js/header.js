@@ -129,7 +129,7 @@ const volumeOn = () => {
 
 //-----------Local storage-------------
 
-function setLocalStorage(key, value) {
+export function setLocalStorage(key, value) {
   localStorage.setItem(key, JSON.stringify(value));
 };
 

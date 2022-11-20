@@ -1,4 +1,13 @@
 import '@/styles/main.scss'
+import {getLocalStorage} from './header'
+
+const sum = getLocalStorage('score')
 
 const scoreSum = document.querySelector('.score-sum');
-scoreSum.innerHTML = '9'
+const buttonPlayAgain = document.querySelector('.button-play-again')
+scoreSum.innerHTML = sum;
+buttonPlayAgain.classList.add('hide');
+
+if(sum < 30) {
+    buttonPlayAgain.classList.remove('hide');
+}
