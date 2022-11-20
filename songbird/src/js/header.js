@@ -26,6 +26,11 @@ const library = {
     'instrText1': 'Listen to the player.',
     'instrText2': 'And select a bird from the list.',
     'instrText3': 'Each attempt will cost you 1 point.',
+    'congratulationsTitle': 'Congratulations!',
+    'congratulationsText1': 'You took the quiz and scored ',
+    'congratulationsText2': ' out of a possible 30 points.',
+    'buttonPlayAgain': 'try again',
+    'buttonGoHome': 'home page',
   },
     'ru': {
       'pageHome': 'Главная',
@@ -50,6 +55,11 @@ const library = {
       'instrText1': 'Прослушайте плеер.',
       'instrText2': 'Выберите птицу из списка.',
       'instrText3': 'Каждая попытка будет стоить вам 1 балл.',
+      'congratulationsTitle': 'Поздравляем!',
+      'congratulationsText1': 'Вы прошли викторину и набрали ',
+      'congratulationsText2': ' из 30 возможных баллов',
+      'buttonPlayAgain': 'Попробовать еще раз',
+      'buttonGoHome': 'Вернуться на главную',
   }
 };
 
@@ -136,7 +146,6 @@ window.addEventListener('beforeunload', () =>  {
 });
 
 window.addEventListener('load', () => {
-  console.log(getLocalStorage('language').label)
   if(getLocalStorage('language').label) {
       languageSelected = getLocalStorage('language').label;
   } else {
