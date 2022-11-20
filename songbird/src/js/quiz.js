@@ -2,7 +2,7 @@ import '@/styles/main.scss'
 
 import birdsDataRu from './birds_ru';
 import birdsDataEn from './birds_en';
-import {getLocalStorage, languageSelected} from './header'
+import {getLocalStorage, setLocalStorage, languageSelected} from './header'
 
 //-----load info birds------------
 
@@ -213,7 +213,7 @@ const score = document.querySelector('.score');
 
 score.textContent = 0;
 let sum = 0;
-let counter = 1;
+let counter = 0;
 
 //------choice bird----------
 
@@ -248,6 +248,7 @@ const audioWrong = new Audio;
 audioWrong.src = './assets/audio/guess.mp3';
 const audioQuess = new Audio;
 audioQuess.src = './assets/audio/wrong.mp3';
+let arrayBirdsClick = [];
 
 birdsAnswersBlock.addEventListener('click', event => {
     if(event.target.className!=='options-container'){
@@ -258,6 +259,9 @@ birdsAnswersBlock.addEventListener('click', event => {
         infoBirdBlock.classList.remove('hide');
         getAudioMini(birdName);
         if(canMark) {
+            if (!arrayBirdsClick.includes(bird.textContent)) {
+                counter++;
+            }
             if (birdName === rightAnswer.name) {
                 canNextLevel = true;
                 rigthAnswerImg.classList.remove('close-img');
@@ -278,11 +282,15 @@ birdsAnswersBlock.addEventListener('click', event => {
                 playButton.classList.remove('pause');
                 let calc = 6 - counter;
                 sum += 6 - counter;
+                counter = 0;
+                arrayBirdsClick = [];
                 score.textContent =`${score.textContent} + ${calc}`;
                 setTimeout(() => score.textContent = sum, 800);
-                counter = 1;
             } else {
-                counter++;
+                if (!arrayBirdsClick.includes(bird.textContent)) {
+                    arrayBirdsClick.push(bird.textContent);
+                }
+                console.log(arrayBirdsClick)
                 bird.classList.add('wrong');
                 audioQuess.pause();
                 audioWrong.load();
@@ -290,6 +298,10 @@ birdsAnswersBlock.addEventListener('click', event => {
             };
         };
     };
+});
+
+window.addEventListener('beforeunload', () =>  {
+    setLocalStorage('score', sum);
 });
 
 //--------fill info block--------------
