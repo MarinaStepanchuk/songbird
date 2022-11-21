@@ -4,13 +4,20 @@
     padding-top: 35px;
     padding-bottom: 50px;
     font-size: 2rem;
+    position: relative;
 }
 
 .gallery-wrapper {
     width: 100%;
+    min-height: 450px;
     padding: 15px;
     @include flex(row, space-between);
     position: relative;
+    overflow: hidden;
+
+    @media (max-width: 600px) {
+
+    }
 }
 
 .type-birds-gallery-container {
@@ -71,9 +78,15 @@
     border: 2px solid #7e7461;
     padding: 2rem 2rem;
     border-radius: 1rem;
-    background-color: rgba(126, 116, 97, 0.5);
-
-    display: none;
+    background-color: rgb(126, 116, 97);
+    position: absolute;
+    transform:translate(-50%,-50%);
+    top: 40%;
+    left: 50%;
+    opacity: 1;
+    z-index: 40;
+    transition: all 0.6s;
+    
 
     .card-body-gallery {
         @include flex(row, flex-start, flex-start);
@@ -112,6 +125,10 @@
     }
 }
 
+.show {
+    opacity: 1;
+}
+
 .background-gallery {
     position: absolute;
     z-index: -15;
@@ -135,10 +152,17 @@
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
     gap: 0px 23px;
+    // position: relative;
+    transition: all 0.6s;
+    opacity: 1;
 
     @media (max-width: 800px) {
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(3, 1fr);
+    }
+
+    &.change {
+        opacity: 0;
     }
 }
 
@@ -173,19 +197,26 @@
     flex-shrink: 0;
     margin: 15px;
     position: relative;
-    top: -15px;
+    top: -18px;
 
     &:hover {
         background-color: #996f45;
+        box-shadow: 0 0 10px #e4d3b4,0 0 20px #e4d3b4,0 0 30px #e4d3b4;
     }
+}
 
-    .dissable {
-        background-color: #c5b49c;
+.disabled {
+    background-color: #4c453c;
+    cursor: auto;
+
+    &:hover {
+        background-color: #4c453c;
+        box-shadow: none;
     }
 }
 
 
-.player-gallery {
+.player-container-gallery {
     @include flex(row, center, flex-start);
     width: 100%;
     gap: 15px;
