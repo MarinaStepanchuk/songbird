@@ -1,1 +1,0 @@
-(()=>{"use strict";const e=document.querySelector(".preview-video");e.muted=!1,e.addEventListener("click",(()=>{console.log(1),e.muted=!1}))})();
