@@ -1,0 +1,306 @@
+.gallery {
+    width: 100%;
+    @include flex(column, flex-start, center);
+    padding-top: 35px;
+    padding-bottom: 50px;
+    font-size: 2rem;
+}
+
+.gallery-wrapper {
+    width: 100%;
+    padding: 15px;
+    @include flex(row, space-between);
+    position: relative;
+}
+
+.type-birds-gallery-container {
+    width: 100%;
+    font-size: 2rem;
+    padding-bottom: 30px;
+    @include flex(row, space-around, center);
+    gap: 2px;
+    color: #2b4249;
+    border: 2px solid #2b4249;
+    box-sizing: border-box;
+
+    @media (max-width: 600px) {
+        flex-wrap: wrap;
+        font-size: 1.6rem;
+    }
+
+    .type-birds-item-gallery {
+        width: 100%;
+        @include flex();
+        background-color: #c5b49c;
+        box-sizing: content-box;
+        padding-top: 10px;
+        padding-bottom: 10px;
+
+        &:hover {
+            cursor: pointer;
+            background-color: rgba(126, 116, 97, 0.8);
+        }
+
+        @media (max-width: 940px) {
+            height: 40px;
+            text-align: center;
+        }
+
+        @media (max-width: 600px) {
+            height: inherit;
+            width: 33%;
+        }
+
+        @media (max-width: 440px) {
+            height: inherit;
+            width: 49%;
+        }
+    }
+
+    .item-gallery-active {
+        background-color: rgba(24, 24, 24, 0.3);
+        color: #e4d3b4;
+        text-shadow: 0 0 10px #e4d3b4,0 0 20px #e4d3b4,0 0 30px #e4d3b4;
+    }
+}
+
+.card-bird-gallery-wrapper {
+    @include flex(column);
+    opacity: 1;
+    width: 350px;
+    border: 2px solid #7e7461;
+    padding: 2rem 2rem;
+    border-radius: 1rem;
+    background-color: rgba(126, 116, 97, 0.5);
+
+    display: none;
+
+    .card-body-gallery {
+        @include flex(row, flex-start, flex-start);
+        width: 100%;
+        padding-bottom: 2rem;
+
+        .card-gallery-img {
+            width: 200px;
+            height: 150px;
+            background-color: #996f45;
+            border-radius: 20px;
+            object-fit: cover;
+            overflow: hidden;
+            align-self: center;
+        }
+
+        .card-gallery-text {
+            @include flex(column, space-between, flex-start);
+            width: 50%;
+            padding-left: 20px;
+        }
+
+        .type-bird-gallery {
+            margin-top: 10px;
+        }
+
+        .name-bird-gallery, 
+        .type-bird-gallery {
+            width: 100%;
+            border-bottom: 2px solid #7e7461;
+        }
+    }
+
+    .card-description-gallery {
+        font-size: 1.5rem;
+    }
+}
+
+.background-gallery {
+    position: absolute;
+    z-index: -15;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.45);
+    opacity: 0;
+    transition: all 0.6s;
+
+    &.card-open {
+        z-index: 15;
+        opacity: 1;
+    }  
+}
+
+.birds-wrapper {
+    width: 88%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 0px 23px;
+
+    @media (max-width: 800px) {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+    }
+}
+
+.bird-photo {
+    width: 100%;
+    height: 85%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+.photo {
+    position: relative;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.arrow {
+    width: 40px;
+    height: 40px;
+    background-color: #7e7461;
+    border-radius: 50%;
+    @include flex();
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    margin: 15px;
+    position: relative;
+    top: -15px;
+
+    &:hover {
+        background-color: #996f45;
+    }
+
+    .dissable {
+        background-color: #c5b49c;
+    }
+}
+
+
+.player-gallery {
+    @include flex(row, center, flex-start);
+    width: 100%;
+    gap: 15px;
+    transition: opacity ease 1s;
+    padding-top: 5px;
+    z-index: 5;
+
+    .player-icon-gallery {
+        width: 60px;
+        height: 60px;
+        background-size: 45px 45px;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-color: transparent;
+        border: 0;
+        outline: 0;
+        opacity: .6;
+        cursor: pointer;
+        transition: .3s; 
+        background-size: 90% 90%;
+
+        &:hover {
+          opacity: 1;
+        }
+      
+        &:active {
+          border: 0;
+          outline: 0;  
+          transform: scale(1.05);
+        }
+    }
+
+    .play-gallery {
+        background-image: url("../assets/img/play-icon.svg");
+    }
+    
+    .pause-gallery {
+        background-image: url("../assets/img/pause-icon.svg");
+    }
+
+    .progress-gallery {
+        position: relative;
+        width: 80%;
+        @include flex(column);
+        gap: 10px;
+        width: 100%;
+    
+        .timeline-gallery {
+            background: #c5b49c;
+            width: 100%;
+            height: 4px;
+            position: relative;
+            cursor: pointer;
+            margin-top: 27px;
+            box-shadow: 0 2px 10px 0 #0008;
+            background: linear-gradient(to right, rgb(153, 111, 69) 0%, rgb(157, 122, 89) 0%, rgb(197, 180, 156) 0%, rgb(197, 180, 156) 100%);
+        
+            .timeline-circle-gallery {
+                position: absolute;
+                left: 0;
+                top: 0;
+                transform: translate(-50%, calc(-50% + 2px));
+                width: 16px;
+                height: 16px;
+                border-radius: 50%;
+                background-color: #996f45;
+                z-index: 20;
+            }
+        }
+    
+        .player-time-gallery {
+            @include flex(row, space-between, center);
+            gap: 5px;
+            width: 100%;
+            font-size: 1.4rem;
+        }
+    }
+}
+
+.player-volume-gallery {
+    @include flex();
+    margin-left: 5px;
+    gap: 10px;
+    padding-top: 5px;
+}
+  
+.button-volume-gallery {
+    width: 18px;
+    height: 18px;
+    background-image: url("../assets/img/volume.svg");
+    background-size: 18px 18px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+    opacity: .8;
+    cursor: pointer;
+    transition: .3s; 
+}
+
+.sound-volume-gallery {
+    width: 70px;
+    height: 2.5px;
+    appearance: none;
+    border-radius: 10px;
+    background: #e4d3b4; 
+}
+
+.sound-volume-gallery::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: #e4d3b4; 
+    cursor: pointer;
+}
