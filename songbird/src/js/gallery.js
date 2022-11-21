@@ -58,13 +58,13 @@ function createSlide(num) {
     img.id = bird.id;
     img.alt = bird.name;
     slide.appendChild(item)
-  })
-}
+  });
+};
 
 createSlide(numberGroup);
 
-const prevSlide = document.querySelector('.arrow-left');
-const nextSlide = document.querySelector('.arrow-right');
+const nextSlide = document.querySelector('.arrow-left');
+const prevSlide = document.querySelector('.arrow-right');
 
 nextSlide.classList.add('disabled');
 
@@ -73,13 +73,12 @@ let canChange = true;
 prevSlide.addEventListener('click', () => {
   nextSlide.classList.remove('disabled');
   if(numberGroup < 4) {
-    changeSlidePrev()
+    changeSlidePrev();
   } else if(numberGroup === 4) {
-    changeSlidePrev()
+    changeSlidePrev();
     prevSlide.classList.add('disabled');
-  }
-  console.log(numberGroup)
-})
+  };
+});
 
 nextSlide.addEventListener('click', () => {
   prevSlide.classList.remove('disabled');
@@ -88,9 +87,8 @@ nextSlide.addEventListener('click', () => {
   } else if(numberGroup === 2) {
     changeSlideNext()
     nextSlide.classList.add('disabled');
-  }
-  console.log(numberGroup)
-})
+  };
+});
 
 function changeSlidePrev() {
   if(canChange) {
@@ -129,12 +127,12 @@ function changeSlideNext() {
 }
 
 const slider = document.querySelector('.gallery-wrapper');
-const back = document.querySelector('.background-gallery')
+const back = document.querySelector('.background-gallery');
 
 slide.addEventListener('click', (event) => {
   if(event.target.offsetParent.classList.contains('bird-photo')) {
     const numberBird = event.target.id;
-    const bird = birdsData[numberGroup][numberBird];
+    const bird = birdsData[numberGroup][numberBird - 1];
     let card = document.createElement('div')
     card.classList.add('card-bird-gallery-wrapper');
     card.innerHTML = `
@@ -165,7 +163,27 @@ slide.addEventListener('click', (event) => {
     slider.appendChild(card);
     back.classList.add('card-open');
     card.classList.add('show');
-    // card.classList.add()
   }
 })
 
+//-----------languadge----------
+
+const languageSwitch = document.querySelector('.language-switch');
+const languageRu = document.querySelector('.language-ru');
+const languageEn = document.querySelector('.language-en');
+
+languageEn.addEventListener('click', () => {
+  birdsData = birdsDataEn;
+});
+
+languageRu.addEventListener('click', () => {
+  birdsData = birdsDataRu;
+});
+
+languageSwitch.addEventListener('click', () => {
+  if(languageSwitch.value === '1') {
+    birdsData = birdsDataRu;
+  } else {
+    birdsData = birdsDataEn;
+  }
+});
